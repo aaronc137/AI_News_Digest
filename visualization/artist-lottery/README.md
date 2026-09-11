@@ -81,6 +81,8 @@ The mechanism lexicon is organized around space, material, rhythm, viewing condi
 
 ## Design Prompt Method
 
+Daily prompts additionally follow [Daily ImageGen Architecture v2](../daily-imagegen-prompt-architecture.md). Borrow the weekly report's action-led integrated typography, not its palette or miniature-object template. Keep one short thesis, one product anchor and at most one qualification; preserve evidence metadata off-image. Review with headline-hidden, story-substitution and mobile-readability tests.
+
 Lottery follows the repository-wide [DESIGN_PRINCIPLES.md](../../DESIGN_PRINCIPLES.md) contract. The selected artist or visual system is only the provenance and mechanism source; the work must still move through four explicit stages:
 
 ```text

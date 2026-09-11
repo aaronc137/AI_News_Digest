@@ -2,7 +2,7 @@
 name: ralph-daily-loop
 description: |
   AI 日报 Ralph Loop 编排器。将 800 行的 ai-daily-report 工作流拆分为 9 个主 Goal
-  + Newsletter / 微信文章 2 条并行预采集线，
+  + Newsletter / 微信文章 / BidClub 播客 3 条并行预采集线，
   通过文件系统持久化实现跨上下文记忆，支持 Codex /goal、Claude Code Ralph Loop、
   Mira 定时任务三种执行模式。解决单次运行上下文爆炸（100k+ tokens）的问题。
   触发词：ralph loop、ralph 日报、分阶段跑日报、日报不要爆上下文、
@@ -11,7 +11,7 @@ description: |
 
 # Ralph Daily Loop — AI 日报分阶段编排器
 
-> **核心理念**：文件系统即记忆，每个 Goal 拿全新上下文窗口，2 条并行预采集线 + 9 个主阶段串联跑完整日报。
+> **核心理念**：文件系统即记忆，每个 Goal 拿全新上下文窗口，3 条并行预采集线 + 9 个主阶段串联跑完整日报。
 
 ## 问题本质
 
@@ -25,11 +25,12 @@ description: |
 ```
 ┌──────────────────────────────────────────────────────────────┐
 │                    Ralph Daily Loop                           │
-│          (2 parallel pre-collectors + 9 main Goals)            │
+│          (3 parallel pre-collectors + 9 main Goals)            │
 ├──────────────────────────────────────────────────────────────┤
 │                                                                │
 │  Goal 0: SCAN_NEWSLETTER    ──→ data/00-newsletter.json       │
 │  Goal 0B: FETCH_WECHAT      ──→ data/00b-wechat-articles.json │
+│  Goal 0C: SCAN_BIDCLUB      ──→ data/00c-bidclub-podcasts.json│
 │  Goal 1: COLLECT_CHINESE    ──→ data/01-chinese.json          │
 │  Goal 2: COLLECT_ENGLISH     ──→ data/02-english.json         │
 │  Goal 3: COLLECT_BUILDER     ──→ data/03-builder.json         │
@@ -75,6 +76,7 @@ mkdir -p "$WORK_DIR/data" "$WORK_DIR/output" "$WORK_DIR/prompts"
 GOALS=(
   "SCAN_NEWSLETTER"
   "FETCH_WECHAT_ARTICLES"
+  "SCAN_BIDCLUB_PODCASTS"
   "COLLECT_CHINESE"
   "COLLECT_ENGLISH"
   "COLLECT_BUILDER"
@@ -208,13 +210,68 @@ node scripts/fetch.js "https://mp.weixin.qq.com/s/xxxxx" "$WORK_DIR/wechat-artic
 - [ ] 失败条目必须含 `qa_notes`
 ```
 
+#### prompts/SCAN_BIDCLUB_PODCASTS.md
+
+# Goal: SCAN_BIDCLUB_PODCASTS — BidClub 播客新增扫描
+
+## 任务
+每天检查 BidClub.ai 是否有过去 24 小时新增的 AI 相关播客或 recorded conversation，作为「海外建设者」的独立补充信源。
+
+## 发现与抓取
+
+BidClub 提供免密公开接口，不需要账号或 API Key：
+
+    PYTHON=<python>
+    $PYTHON ralph-daily-loop/fetch_bidclub.py \
+      --out "$WORK_DIR/data/00c-bidclub-podcasts.json" \
+      --meta-out "$WORK_DIR/data/00c-bidclub-podcasts.meta.json" \
+      --state "$WORK_DIR/data/bidclub-state.json" \
+      --since-hours 24
+
+扫描器只拉取最新分页 GET https://bidclub.ai/api/v1/episodes?limit=100&offset=0，按 published_at/date 过滤时间窗；命中新集后才按需请求 GET /api/v1/episodes/{slug}。不要每天轮询几 MB 的 feed-index，也不要把完整 transcript 写入阶段文件。
+
+## 输出规则
+
+写入 data/00c-bidclub-podcasts.json，即使没有新集也必须写入合法空数组 []。每条至少包含：
+
+    {
+      "title": "Episode title",
+      "source": "BidClub · Show name",
+      "url": "原始收听/观看链接",
+      "summary": "来自 dek 或 TL;DR 的紧凑摘要",
+      "board": "海外建设者",
+      "date": "YYYY-MM-DD",
+      "podcast": true,
+      "podcast_show": "节目名",
+      "podcast_evidence_excerpt": "来自 BidClub 摘要的有限证据摘录",
+      "bidclub_url": "https://bidclub.ai/e/episode-slug",
+      "bidclub_detail_url": "https://bidclub.ai/api/v1/episodes/episode-slug",
+      "podcast_detail_status": "fetched | metadata_only | skipped_limit"
+    }
+
+data/00c-bidclub-podcasts.meta.json 记录 status、checked_at、since、recent_candidates、detail_fetched、detail_failures 和 errors。BidClub API 失败时，扫描器写入 [] 与 warning metadata，让其它 Goal 继续运行；不得编造节目或摘要。
+
+## 进入日报前的编辑规则
+
+- BidClub 的 TL;DR、digest 和 transcript 是研究线索，不是第二个独立事实来源；关键数字、公司动作和判断必须回到原始节目/视频/文章链接核验。
+- 入选正文时必须写出核心论点、2-3 条关键依据、编辑判断或反证、限制条件和原始收听链接，不能只列节目名、嘉宾和日期。
+- podcast_evidence_excerpt 只作为后续 Goal 的定向阅读入口；需要全文时再打开 bidclub_detail_url 或 /dl/{slug}/summary.md，避免把长 transcript 带入主上下文。
+- 让 board 固定为 海外建设者，由 Goal 7 合并去重、Goal 9 渲染到「海外建设者动态」。
+
+## 完成条件
+
+- [ ] data/00c-bidclub-podcasts.json 存在且 JSON 合法
+- [ ] data/00c-bidclub-podcasts.meta.json 存在且 JSON 合法
+- [ ] 无新增时允许空数组；有新增时每条含 title/source/url/summary/board/date
+- [ ] 详情失败必须在 metadata 的 errors / detail_failures 中可见
+
 #### prompts/COLLECT_CHINESE.md
 ```markdown
 # Goal: COLLECT_CHINESE — 中文核心信源巡检
 
 ## ℹ️ 并行说明
-本阶段（Goal 1）与 Goal 0 (Newsletter)、Goal 0B (Wechat) 是**并行采集**关系，无需等待它们完成。
-三者的结果在 Goal 7 (MERGE_DEDUP) 阶段才统一合并处理。
+本阶段（Goal 1）与 Goal 0 (Newsletter)、Goal 0B (Wechat)、Goal 0C (BidClub) 是**并行采集**关系，无需等待它们完成。
+四者的结果在 Goal 7 (MERGE_DEDUP) 阶段才统一合并处理。
 
 ## 任务
 巡检 Tier 1-2 中文信源，提取当日 AI 行业新闻，输出结构化 JSON。
@@ -552,6 +609,23 @@ if [[ "$WECHAT_COUNT" -eq 0 ]]; then
 else
   echo "✅ Goal 0B 验证通过: data/00b-wechat-articles.json ($WECHAT_COUNT 条)"
 fi
+
+# 检查 Goal 0C BidClub 播客产出（并行线）
+if [[ ! -f "$WORK_DIR/data/00c-bidclub-podcasts.json" ]] || [[ ! -s "$WORK_DIR/data/00c-bidclub-podcasts.json" ]]; then
+  echo "❌ BidClub 播客产出缺失: data/00c-bidclub-podcasts.json（来自 SCAN_BIDCLUB_PODCASTS）"
+  echo "🔄 重新执行 SCAN_BIDCLUB_PODCASTS ..."
+  echo "CURRENT_STAGE=SCAN_BIDCLUB_PODCASTS" > "$WORK_DIR/.progress"
+  exit 1
+fi
+BIDCLUB_COUNT=$(jq 'if type=="array" then length else 1 end' "$WORK_DIR/data/00c-bidclub-podcasts.json" 2>/dev/null || echo 0)
+if [[ "$BIDCLUB_COUNT" -eq 0 ]]; then
+  echo "⚠️ BidClub 结果为空数组（时间窗内无新增播客），继续执行"
+else
+  echo "✅ Goal 0C 验证通过: data/00c-bidclub-podcasts.json ($BIDCLUB_COUNT 条)"
+fi
+if [[ ! -f "$WORK_DIR/data/00c-bidclub-podcasts.meta.json" ]]; then
+  echo "⚠️ BidClub metadata 缺失，将在 Gate 1 标记为 source-health warning"
+fi
 ```
 
 验证失败处理：
@@ -562,7 +636,7 @@ fi
 - `00b-wechat-articles.json` 为合法空数组 `[]` → 正常继续（当日无高价值微信原文）
 
 ## 任务
-读取 `data/00-newsletter.json`（Newsletter 采集）+ `data/00b-wechat-articles.json`（微信原文）+ `data/01-chinese.json` 到 `data/06-hn-consensus.json` **全部 8 个文件**，
+读取 `data/00-newsletter.json`（Newsletter 采集）+ `data/00b-wechat-articles.json`（微信原文）+ `data/00c-bidclub-podcasts.json`（BidClub 播客）+ `data/01-chinese.json` 到 `data/06-hn-consensus.json` **全部 9 个文件**，
 统一执行三重去重并分级。
 
 ## 去重规则
@@ -906,24 +980,27 @@ python visualization/mck-ppt-design/render_daily_trends.py \
 |------|-------------|----------|------|
 | SCAN_NEWSLETTER | 无 | — | 并行支线，允许空数组 |
 | FETCH_WECHAT_ARTICLES | 无 | — | 并行支线，允许空数组 |
-| COLLECT_CHINESE | 无 | — | 与 Goal 0/0B 并行，无需等待 |
+| SCAN_BIDCLUB_PODCASTS | 无 | — | 并行支线，允许空数组；失败写 warning metadata |
+| COLLECT_CHINESE | 无 | — | 与 Goal 0/0B/0C 并行，无需等待 |
 | COLLECT_ENGLISH | data/01-chinese.json | COLLECT_CHINESE | 串行 |
 | COLLECT_BUILDER | data/02-english.json | COLLECT_ENGLISH | 串行 |
 | COLLECT_XIAPING | data/03-builder.json | COLLECT_BUILDER | 串行 |
 | COLLECT_MCP_RSS | data/04-xiaping.json | COLLECT_XIAPING | 串行 |
 | HN_CONSENSUS | data/05-mcp-rss.json | COLLECT_MCP_RSS | 串行 |
-| MERGE_DEDUP | data/00、00b、01~06 全部文件 | SCAN_NEWSLETTER + FETCH_WECHAT_ARTICLES + HN_CONSENSUS | 汇合点 |
+| MERGE_DEDUP | data/00、00b、00c、01~06 全部文件 | SCAN_NEWSLETTER + FETCH_WECHAT_ARTICLES + SCAN_BIDCLUB_PODCASTS + HN_CONSENSUS | 汇合点 |
 | QA_GATES | data/07-merged.json | MERGE_DEDUP | 串行 |
 | RENDER_OUTPUT | data/08-qa-report.json | QA_GATES | 串行 |
 
 ### 架构图
 ```
 Goal 0: SCAN_NEWSLETTER ──────────────────────────────┐
-Goal 0B: FETCH_WECHAT_ARTICLES ───────────────────────┼──→ Goal 7: MERGE_DEDUP → Goal 8 → Goal 9
+Goal 0B: FETCH_WECHAT_ARTICLES ───────────────────────┤
+Goal 0C: SCAN_BIDCLUB_PODCASTS ───────────────────────┼──→ Goal 7: MERGE_DEDUP → Goal 8 → Goal 9
 Goal 1→2→3→4→5 (串行采集) → Goal 6: HN_CONSENSUS ───┘
 ```
 
 ### 安全机制
+- **BidClub 特例**：SCAN_BIDCLUB_PODCASTS 独立运行，无新增时允许空数组；API 异常只写 metadata warning，不阻塞其它信源
 - **最大重试次数**：Ralph Loop 的 MAX_ITERATIONS=15 天然兜底，防止无限循环
 - **Newsletter 特例**：SCAN_NEWSLETTER 独立运行，若邮箱无 Newsletter 允许输出空数组 `[]`
 - **微信文章特例**：FETCH_WECHAT_ARTICLES 独立运行，若当日无高价值微信原文允许输出空数组 `[]`
@@ -1066,6 +1143,7 @@ check() {
 
 check "00-newsletter"   "$WORK_DIR/data/00-newsletter.json"    0
 check "00b-wechat"      "$WORK_DIR/data/00b-wechat-articles.json" 0
+check "00c-bidclub"     "$WORK_DIR/data/00c-bidclub-podcasts.json" 0
 check "01-chinese"      "$WORK_DIR/data/01-chinese.json"      10
 check "02-english"      "$WORK_DIR/data/02-english.json"      8
 check "03-builder"      "$WORK_DIR/data/03-builder.json"      5

@@ -11,6 +11,10 @@ description: |
 
 # AI 行业日报生成技能
 
+## 日报出图补充规则（2026-09-09）
+
+生成或迭代趋势图前，必读 `../visualization/daily-imagegen-prompt-architecture.md`。借鉴周报的动作驱动图文一体范式，不固定周报配色或今天的艺术家：一图一个短判断、一个不重复产品锚点、至多一句限定；文字沿主体关系排布，手机宽度可读。来源ID、日期、证据边界保存在prompt记录中，不整段搬上图。增加遮标题、换新闻和三图构图差异测试；沿用Lottery与独立critic，直接imagegen图文一体，不经HTML。用户只要求迭代prompt时，更新规则与实例，不自动重新出图或覆盖已发布产物。
+
 你是一位专业的 AI 行业新闻编辑。你的任务是搜索、筛选、核验并组织当日最重要的 AI 行业新闻，输出一份高质量的中文日报。
 
 日报的核心价值在于**信噪比**——读者花 3 分钟就能掌握当天 AI 领域最值得关注的动态。每一条收录的新闻都要值得读者停下来看，每一条都要附上可点击的原始信息链接。
@@ -32,6 +36,15 @@ description: |
 - 趋势正文先写非技术读者能感受到的工作、预算、入口、留存或风险变化，再补充技术机制；技术名词必须服务于“谁会因此改变产品、工作方式或决策”。
 
 ---
+
+### 趋势颗粒度硬门槛（2026-09-09 用户确认）
+
+- 每条趋势必须同时回答：此前是什么格局、本期哪些具体公司或产品带来什么增量、它们沿哪条产品或技术路线形成什么变化、这对用户或产品决策有什么影响。历史参照只作基线，不重新计作本期新闻；没有足够证据串联时收窄判断，不硬凑阵营。
+- 通俗表达不能抹掉机制。先锁定「具体玩家 + 路线 + 本期变化」，再翻译成读者利益；「AI 接下一步」「从聊天到办事」「更懂用户」「少返工」只能作辅助钩子，不能独立充当趋势结论。产品名也不能只是贴在泛判断前面。
+- 合格颗粒度示例：「继 Grok Bot 之后，Meta Muse 上线、OpenAI 托管 Agent 露出，云原生＋Computer Use 阵营继续扩容。」它指出前序参照、新玩家、执行路线与格局变化；不是固定让以后都写云端 Agent。
+- 证据状态单独保留：已上线、灰度、计划、代码发现和观点不可混写。未发布线索不必一律过滤，可作为有明确来源与限定的趋势信号；不得写成已可用，亦不得把路线接近写成能力相同。
+- 发布前做两项反证检查：①删掉公司名后，是否仍是每天都能套用的空话？②换成昨天新闻，判断是否几乎不用改？任一为是，就补充具体路线、比较基线和本期增量，或撤掉这条趋势。不能仅靠堆产品名、术语和数据过关。
+- 主线获用户确认后，详细版标题与核心观点、可视化命题及图中文字、卡片标题与趋势框必须同步；出图前先检查命题颗粒度，不能用精美画面包装泛结论。
 
 ## 第一阶段：信息采集（并行三轨 + 搜索补充）
 
@@ -116,6 +129,20 @@ description: |
 - **不要按点赞数设门槛**——低热度（<100❤）推文只要有实质性观点就收录
 - 每位 Builder 用其 `name`（全名）+ `bio` 中的职位标识，不要用 @handle 做主标识
 - 每条推文必须附原始 URL 链接（直接取自 Feed 中的 `url` 字段）
+
+#### 1A-BidClub. 新增播客扫描
+
+每天额外检查 [BidClub.ai](https://bidclub.ai/) 的公开播客目录，作为海外建设者和观点层的补充信源。使用仓库内 ralph-daily-loop/fetch_bidclub.py：
+
+    python ralph-daily-loop/fetch_bidclub.py \
+      --out data/00c-bidclub-podcasts.json \
+      --meta-out data/00c-bidclub-podcasts.meta.json \
+      --state data/bidclub-state.json \
+      --since-hours 24
+
+扫描器只读取最新分页 API，按 published_at/date 过滤过去 24 小时，再对候选单集请求详情。它保留原始收听/观看链接与 BidClub 单集链接，只写入有限 TL;DR 摘录，不搬运完整 transcript；当日没有新增时写入空数组，当接口异常时写入 metadata warning，不能编造节目。
+
+入选日报的 BidClub 节目必须经过原始节目链接核验，并写出核心论点、2-3 条关键依据、编辑判断或反证、限制条件和收听/观看链接。BidClub 的 TL;DR、digest 与 transcript 是研究辅助材料，不能单独充当独立事实来源。
 
 #### 1B. Watch Focus Tier 1 公司官方信源逐查
 
@@ -447,6 +474,7 @@ curl -sH "User-Agent: $UA" "https://aihot.virxact.com/api/public/items?mode=sele
 | **Tier 3（英文）** | TechCrunch、The Verge、Reuters、Bloomberg、TLDR、Product Hunt、Huggingface | 海外一手信息 |
 | **Tier 4（数据型）** | aicpb.com、AIwatch.ai、Toolify.ai、Trust MRR | 产品数据与榜单 |
 | **Tier 5（Builder Feed）** | follow-builders 中心化 Feed（X推文 + 播客 + 博客） | 海外建设者一手动态 |
+| **Tier 5B（BidClub 播客）** | [BidClub.ai](https://bidclub.ai/) 公开播客目录、单集详情与 RSS | 更广泛的 AI 播客发现、观点摘要和原始节目入口 |
 | **Tier 6（虾评增强）** | news-aggregator-skill（28信源批量抓取）、content-trend-researcher（趋势验证）、smart-web-fetch（反爬降级） | 增强覆盖 + 趋势验证 + 抓取可靠性 |
 | **Tier 7（agents-radar MCP）** | agents-radar 托管 MCP Server（10 信源 AI 生态日报：GitHub / ArXiv / HN / HF / PH / Dev.to / Lobste.rs / Anthropic / OpenAI sitemap） | 预结构化 AI 生态数据 + 跨工具对比 + 社区情绪 |
 | **Tier 7（公众号/社交）** | Sensight social_search、大厂公众号、行业深度公众号、wechat-article-fetch 微信全文抓取 | 微信生态首发内容 + 可回溯原文全文 |
@@ -454,6 +482,8 @@ curl -sH "User-Agent: $UA" "https://aihot.virxact.com/api/public/items?mode=sele
 | **Tier 9（邮箱 Newsletter）** | 飞书邮箱 Newsletter 自动扫描（The Rundown AI / TLDR AI / AI Breakfast / ThursdAI / GenAI Assembling / Lenny / ARK 等） | 英文一手 Newsletter 精华提取 + 已订阅信源零遗漏 |
 
 ### 原始链接采集规则
+
+BidClub 允许用 BidClub 单集页作为研究入口，但正文优先链接节目原始视频、播客或发布页；详情摘要中的数字、公司动作和战略判断必须回到原始链接复核。
 
 这是日报质量的硬性要求：
 
@@ -558,6 +588,12 @@ Anthropic、xAI、百度/文心、华为/盘古、MiniMax、月之暗面/Kimi、
 4. **拉取** `feed-blogs.json`：如有新文章，提取核心技术要点
 5. **合成日报条目**：将所有有价值的内容写入"海外建设者"板块，直接使用 Feed 中的 `url` 字段作为原始链接
 
+#### BidClub 补充扫描与边界
+
+follow-builders 负责固定 Builder 生态的持续追踪；BidClub 负责发现更广泛的播客与 recorded conversation。两条来源都归入「海外建设者」，但分别保留来源标记，便于后续判断是 Builder 原话还是节目访谈。
+
+每天使用 BidClub 最新分页接口，候选命中后读取单集详情中的 tldr_md 或 digest_md。阶段快照只保留紧凑证据摘录和原始链接，完整 transcript 留在 BidClub 的详情/下载接口中按需打开。没有原始节目链接时，只能作为待核验线索，不得用摘要中的未经复核数字做趋势证据。
+
 #### Feed 中覆盖的 Builder 列表（25人）
 
 这些 Builder 已被 follow-builders 项目持续追踪，**无需逐个搜索**：
@@ -624,6 +660,7 @@ Anthropic、xAI、百度/文心、华为/盘古、MiniMax、月之暗面/Kimi、
 - [ ] 1A. feed-x.json 已拉取并全量解析（Builder数:___, 推文数:___）
 - [ ] 1A. feed-podcasts.json 已拉取（近24h新集数:___）
 - [ ] 1A. feed-blogs.json 已拉取（近24h新文数:___）
+- [ ] 1A-BidClub. 最新播客分页已检查（近24h新集数:___，详情成功:___，接口状态:___）
 - [ ] 1B. Tier 1 公司官方博客已逐一检查（列出每家的检查结果:有/无新发布）
 - [ ] 1C. Tier 1 中文媒体已逐一搜索（IT之家/极客公园/量子位/机器之心/新智元/36Kr）
 - [ ] 1D. Tier 3 英文信源已搜索（HF/TC/Engadget/Verge/Ars/TLDR/PH）
@@ -659,9 +696,12 @@ Anthropic、xAI、百度/文心、华为/盘古、MiniMax、月之暗面/Kimi、
 - 如果 Tier 1 源全部失效 → 日报末尾标注「⚠️ 信源缺失」
 - 不可单一来源依赖
 - **检查 follow-builders feed 是否成功拉取**（`generatedAt` 时间戳应在24小时内）
+- **检查 BidClub metadata 是否存在**；若状态为 partial/error，保留 warning，不把无新增误判为失败
 - **检查 Tier 1 公司官方博客是否都已巡检**（即使无新发布也需确认已检查）
 
 ### Gate 2：去重与交叉验证
+
+- BidClub 只作为研究辅助层；入选条目的关键数字、产品动作和战略判断必须有原始节目/视频/文章链接或其它独立来源支撑
 
 - 多源报道同一事件 → 合并为一条，保留信息最完整的版本
 - 每条新闻尽量有 ≥ 2 个独立来源交叉验证
@@ -896,6 +936,7 @@ Podcast 入选正文时，必须在「观点与深度」或「海外建设者动
 | 节目 | 标题 | 发布日期 | 本期处理 |
 |------|------|---------|---------|
 | [节目名] | [标题] | [YYYY-MM-DD] | [入选正文/仅监测/超出窗口；若入选，注明对应条目编号] |
+| [BidClub.ai] | [新增单集与节目名] | [YYYY-MM-DD] | [核心论点/依据/反证/原始链接；无新增则记录 0] |
 
 ---
 

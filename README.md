@@ -33,6 +33,7 @@ AI News Digest 是一个面向 **AI 从业者、投资研究者、产品经理�
 - 带信号等级的内容筛选：重磅 / 值得关注 / 常规
 - 可沉淀到表格、看板或知识库的 **12 列 CSV**
 - 飞书 **Newsrun 卡片**、**详细版文档**、**结构化沉淀文档**、CSV 和 HTML 五类产物
+- 每天从 [BidClub.ai](https://bidclub.ai/) 扫描过去 24 小时新增播客，把节目观点作为「海外建设者」的补充入口，并保留原始收听链接与有限证据摘录
 - 详细版默认配套由 imagegen 直接生成“图 + 字”的三张 16:9 趋势 PNG；需要艺术化输出时，可选开启艺术家 Lottery：从 MoMA、Centre Pompidou 等现代/当代机构，以及 The Met、大英博物馆、卢浮宫、雅典国立考古博物馆、柏林国家博物馆群/佩加蒙博物馆、墨西哥国立人类学博物馆和哥伦比亚国家博物馆的官方目录抽取艺术家、艺术运动、工坊传统或文化视觉系统。开启后每日风格会追加到统一的「AI日报｜艺术风格 Lottery」飞书文档；HTML 仍是独立日报阅读产物，不是趋势图默认中间格式
 - `初创动向` 每日优先扫描 AI 产品上游供给层与下游产品层的 AI-native startup，关注现金流/经营信号和成长线索；普通垂类公司不纳入，不把融资额当作商业成功
 - 适合团队同步、选题会、投研记录和公众号素材库的结构化输出
@@ -82,7 +83,7 @@ AI News Digest 现在不只是一个“日报提示词”，而是一个可以�
 
 ```mermaid
 flowchart LR
-    A["60+ 中英文信源"] --> B["抓取与反爬降级"]
+    A["60+ 中英文信源 + BidClub 播客"] --> B["抓取与反爬降级"]
     B --> C["去重与交叉验证"]
     C --> D["信号分级"]
     D --> E["事实核验"]
@@ -125,11 +126,13 @@ AI News Digest 使用 9 层信源系统，把“覆盖面”和“可靠性”�
 | Tier 1-2 | 新智元、量子位、机器之心、36Kr、华尔街见闻、极客公园、IT之家等中文核心源 | 中文语境下的行业动态与本土化解读 |
 | Tier 3 | TechCrunch、The Verge、Reuters、Bloomberg、Hugging Face、TLDR、GitHub 等英文源 | 海外一手发布与国际视角 |
 | Tier 4 | aicpb.com、AIwatch.ai、Toolify.ai 等数据型来源 | 产品榜单、流量、热度和市场侧参考 |
-| Tier 5 | [follow-builders](https://github.com/zarazhangrui/follow-builders)：25 位 AI Builder 的 X 动态、6 个 AI 播客、Anthropic/Claude 官方博客 | 捕捉社区里比媒体更早出现的 Builder 原创观点和弱信号 |
+| Tier 5 | [follow-builders](https://github.com/zarazhangrui/follow-builders) + [BidClub.ai](https://bidclub.ai/)：Builder 动态、固定播客 Feed、开放播客目录与 recorded conversations | 捕捉社区里比媒体更早出现的 Builder 原创观点和播客中的行业判断 |
 | Tier 6 | news-aggregator、smart-web-fetch、content-trend-researcher | 批量抓取、反爬降级、跨平台趋势验证 |
 | Tier 7 | wechat-article-fetch、Sensight social_search、大厂公众号、行业深度公众号 | 微信生态首发内容 + 可回溯原文全文 |
 | Tier 8 | [agents-radar MCP](https://github.com/duanyytop/agents-radar) | GitHub、ArXiv、HN、HF、Product Hunt、Dev.to、Lobste.rs 等结构化 AI 生态数据 |
 | Tier 9 | [AI HOT Feed](https://aihot.virxact.com/feed.xml) | 中文预处理的 AI 热点、官方发布与 KOL 观点 |
+
+除了 follow-builders 的固定播客 Feed，日报每天还会检查 [BidClub.ai](https://bidclub.ai/) 的最新单集分页。它把发现、详情和事实核验拆成不同阶段：阶段文件只保留有限证据摘录，关键判断回到原始节目链接，避免长 transcript 撑大上下文。
 
 ## Outputs
 
@@ -276,6 +279,7 @@ AI_News_Digest/
 │   └── mck-ppt-design/
 ├── ralph-daily-loop/
 │   ├── style_contracts.py
+│   ├── fetch_bidclub.py
 │   ├── stage9.py
 │   └── stage9_kleisli.py
 ├── data/
@@ -328,6 +332,8 @@ Star this repo if you want a practical starting point for building a reliable AI
 
 Tier 5 builder signals come from [follow-builders](https://github.com/zarazhangrui/follow-builders), which tracks 25 curated AI builders on X, 6 AI podcasts, and official Anthropic/Claude blog updates.
 
+The daily scan also checks [BidClub.ai](https://bidclub.ai/) for new podcast episodes and recorded conversations. It keeps discovery metadata and a bounded evidence excerpt in the stage snapshot, while the original listening link remains the verification source.
+
 The QA workflow is inspired by [Signex](https://github.com/zhiyuzi/Signex): source health checks, signal convergence, analysis lenses, and feedback memory are adapted here for daily AI news production.
 
 ## Long-Run Architecture
@@ -340,6 +346,7 @@ AI News Digest is no longer just a prompt for a daily brief. It is a staged syst
 | **Ralph Loop** | A mid-run failure forces the whole report to start over | Uses `.progress` / `.done` checkpoint files so the run can resume from the last valid stage |
 | **Kleisli Arrow / Report Monad** | QA gates lose evidence, warnings, or failure state as data moves across stages | Each gate returns `Report[value, status, evidence]`; status propagates, failures can short-circuit, and evidence becomes a trace |
 | **File-backed memory** | Agent memory is unreliable and raw research quickly bloats the context | Only `data/*.json`, traces, and final outputs move between stages; raw collection stays persisted outside the prompt |
+| **BidClub Podcast Goal** | Podcast sources are scattered, episodes are long, and summaries can be mistaken for facts | Scans the newest page independently, deep-reads only candidates, and keeps original links, bounded evidence excerpts, and source-health state |
 | **QA Trace** | Readers cannot see why an item was removed, downgraded, or flagged | Cross-day dedupe, version consistency, URL policy, and other checks write machine-readable traces and visible report notes |
 
 ## Quick Start

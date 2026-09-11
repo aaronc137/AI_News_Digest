@@ -95,6 +95,8 @@ def fmt_item(it):
     head = f"- {sig} **{title}**{cv}"
     if summary:
         head += f"\n  {summary}"
+    if it.get("podcast") and it.get("podcast_evidence_excerpt"):
+        head += f"\n  播客观点依据：{compact(it['podcast_evidence_excerpt'], 900)}"
     if url:
         head += f" [[{src}]]({url})"
     return head
@@ -745,7 +747,7 @@ if builders:
         md.append(fmt_item(it))
     md.append("")
 else:
-    md.append("> 本日海外建设者动态由 HN 共识章节代为承载。\n")
+    md.append("> 本日 Builder / BidClub 播客信源未采集到数据，海外建设者动态由 HN 共识章节代为承载。\n")
 
 md.append("## 📊 质量审核报告\n")
 md.append(f"**整体状态: {qa['overall_status']}**  ·  通过 Gate: {qa['passed_items']}/5  ·  Flag: {qa['flagged_items']}\n")

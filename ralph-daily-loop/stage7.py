@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Goal 7: Merge + dedup + signal level for Day 5.
+"""Goal 7: Merge + dedup + signal level for the daily report.
 
-Note: 01-05 source files missing for this run; merging only 00-newsletter and 06-hn-consensus.
+All source snapshots are optional at runtime; missing files are reported and
+the available snapshots continue through the merge.
 """
 import json
 import re
@@ -14,6 +15,7 @@ DATA_DIR = Path("/data/userdata/daily-report/data")
 # Source priority (higher = preferred when dedup conflict)
 source_priority = {
     "00-newsletter": 7,        # curated newsletters are highest signal
+    "00c-bidclub-podcasts": 5.5, # curated podcast research layer
     "01-chinese": 6,
     "02-english": 5,
     "03-builder": 4,
@@ -24,6 +26,7 @@ source_priority = {
 
 files = {
     "00-newsletter": DATA_DIR / "00-newsletter.json",
+    "00c-bidclub-podcasts": DATA_DIR / "00c-bidclub-podcasts.json",
     "01-chinese": DATA_DIR / "01-chinese.json",
     "02-english": DATA_DIR / "02-english.json",
     "03-builder": DATA_DIR / "03-builder.json",
@@ -225,7 +228,26 @@ for it in final_items:
         "signal_level": it["signal_level"],
         "cross_validated": it["cross_validated"],
     }
-    for k in ("consensus", "action_advice", "points", "comment_count"):
+    for k in (
+        "consensus",
+        "action_advice",
+        "points",
+        "comment_count",
+        "published_at",
+        "podcast",
+        "podcast_source",
+        "podcast_show",
+        "podcast_hosts",
+        "podcast_duration_min",
+        "episode_slug",
+        "bidclub_url",
+        "bidclub_detail_url",
+        "podcast_evidence_excerpt",
+        "podcast_detail_status",
+        "transcript_available",
+        "source_links",
+        "provenance",
+    ):
         if k in it:
             out[k] = it[k]
     if "_cross_sources" in it:

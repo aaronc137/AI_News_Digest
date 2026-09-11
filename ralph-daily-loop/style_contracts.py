@@ -712,12 +712,32 @@ def build_prompt_trace(style_contract, trends, trend_translation, design_process
             "trend_title": trend.get("title"),
             "artist_name_as_prompt_shortcut": False,
             "design_requirements": design_requirements,
+            "daily_editorial_contract": {
+                "architecture": "visualization/daily-imagegen-prompt-architecture.md",
+                "report_window": trend.get("report_window"),
+                "evidence": trend.get("evidence", []),
+                "exact_text": trend.get("exact_text"),
+                "visual_action": trend.get("visual_action"),
+                "input_status": "ready_for_editorial_review" if all(
+                    trend.get(key) for key in ("report_window", "evidence", "exact_text", "visual_action")
+                ) else "needs_editorial_input",
+                "text_budget": {
+                    "title_max_lines": 2,
+                    "product_anchor_max_lines": 1,
+                    "qualification_max_lines": 1,
+                    "chinese_copy_target_max_chars": 50,
+                    "mobile_preview_width": 375,
+                },
+                "checks": ["headline_hidden", "story_substitution", "evidence_boundary", "mobile_readability", "distinct_compositions"],
+                "generation": "integrated_image_and_type_no_html_no_separate_title_overlay",
+                "inherit_weekly_palette": False,
+            },
             "components": {
                 "mechanism_fact": translation["mechanism_rules"],
                 "trend_proposition": _compact(trend.get("desc"), 280),
-                "subject_and_spatial_relation": translation["visual_thesis"],
+                "subject_and_spatial_relation": trend.get("visual_action") or translation["visual_thesis"],
                 "material_and_light": "用具体材料、光线和状态建立趋势世界；不追加无法解释的科技质感。",
-                "type_and_information_hierarchy": "大字号中文标题、单一主判断、证据回查入口，文字不压过主体。",
+                "type_and_information_hierarchy": "一个短判断、一个不重复的产品锚点、至多一句限定；文字与可见动作共用阅读路径，不固定左字右图或上标题下静物。手机375px宽可读，证据详情回正文。",
                 "exclusions_and_cultural_safety": anti_patterns,
             },
         })

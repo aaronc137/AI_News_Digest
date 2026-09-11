@@ -6,6 +6,13 @@ from datetime import datetime
 
 DATA_DIR = Path("/data/userdata/daily-report/data")
 items = json.loads((DATA_DIR / "07b-deduped.json").read_text(encoding="utf-8"))
+bidclub_meta_path = DATA_DIR / "00c-bidclub-podcasts.meta.json"
+bidclub_meta = None
+if bidclub_meta_path.exists():
+    try:
+        bidclub_meta = json.loads(bidclub_meta_path.read_text(encoding="utf-8"))
+    except Exception:
+        bidclub_meta = {"status": "invalid"}
 
 # Today
 TODAY = "2026-06-01"
@@ -13,6 +20,13 @@ RECENT_DATES = {"2026-05-30", "2026-05-31", "2026-06-01"}
 
 # Gate 1: data source health
 g1_issues = []
+if bidclub_meta is None:
+    g1_issues.append("BidClub metadata 缺失")
+elif bidclub_meta.get("status") not in (None, "ok"):
+    g1_issues.append(
+        f"BidClub 扫描状态: {bidclub_meta.get('status')} "
+        f"({bidclub_meta.get('new_count', 0)} 条)"
+    )
 for idx, it in enumerate(items, 1):
     url = it.get("url", "")
     date = it.get("date", "")
@@ -101,6 +115,12 @@ gates = {
     "gate1_data_health": {
         "status": g1_status,
         "urls_checked": len(items),
+        "bidclub_scan": {
+            "status": (bidclub_meta or {}).get("status", "missing"),
+            "new_count": (bidclub_meta or {}).get("new_count", 0),
+            "detail_fetched": (bidclub_meta or {}).get("detail_fetched", 0),
+            "detail_failures": (bidclub_meta or {}).get("detail_failures", 0),
+        },
         "issues": g1_issues,
     },
     "gate2_dedup_verify": {

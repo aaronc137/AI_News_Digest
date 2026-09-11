@@ -46,7 +46,7 @@ ecosystem = []     # 🌐 生态政策
 devtools = []      # 🛠️ 开发者工具
 opinions = []      # 💬 观点
 hn_items = []      # HN 共识
-builders = []      # 🌍 海外建设者(空,因 03 缺失)
+builders = []      # 🌍 海外建设者（Builder + BidClub 播客）
 
 for it in items:
     b = it.get("board", "")
@@ -62,6 +62,8 @@ for it in items:
         devtools.append(it)
     elif b == "观点":
         opinions.append(it)
+    elif b == "海外建设者":
+        builders.append(it)
 
 # Sort: 🔴 first, then 🟡, then ⚪
 SIGNAL_ORDER = {"🔴": 0, "🟡": 1, "⚪": 2}
@@ -69,7 +71,7 @@ def sort_key(x):
     return (SIGNAL_ORDER.get(x.get("signal_level", "⚪"), 3),
             -(x.get("points", 0) or 0))
 
-for arr in (big_co, startup, ecosystem, devtools, opinions, hn_items):
+for arr in (big_co, startup, ecosystem, devtools, opinions, hn_items, builders):
     arr.sort(key=sort_key)
 
 
@@ -83,6 +85,8 @@ def fmt_item(it, idx=None):
     head = f"- {sig} **{title}**{cv}"
     if summary:
         head += f"\n  {summary}"
+    if it.get("podcast") and it.get("podcast_evidence_excerpt"):
+        head += f"\n  播客观点依据：{compact(it['podcast_evidence_excerpt'], 900)}"
     if url:
         head += f" [[{src}]]({url})"
     return head
@@ -717,7 +721,7 @@ if builders:
         md.append(fmt_item(it))
     md.append("")
 else:
-    md.append("> 本日 03-builder 信源未采集到数据,海外建设者动态由 HN 共识章节代为承载。\n")
+    md.append("> 本日 Builder / BidClub 播客信源未采集到数据，海外建设者动态由 HN 共识章节代为承载。\n")
 
 # Section 4: 📊 质量审核报告
 md.append("## 📊 质量审核报告\n")
