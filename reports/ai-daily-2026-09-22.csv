@@ -1,0 +1,19 @@
+日期,编号,板块,标题,信号等级,事实核验,关联公司,关联赛道,来源,原文URL,摘要,是否推送
+2026-09-22,1,大厂动向,OpenAI-Hugging Face黑客事件问责升级：财政部长归责OpenAI管理层,🔴,多源验证,OpenAI/Hugging Face/Nvidia,AI安全/Agent自主性,OpenAI官方+claimsjournal,https://openai.com/index/hugging-face-incident-and-the-road-ahead/,财长9/21表态问责OpenAI管理层 非agent 本身,是
+2026-09-22,2,大厂动向,GPT-6 Astra遭独立机器人安全测试质疑97/100次尝试危险指令,🔴,双源验证,OpenAI,AI安全/具身智能,AnalyticsInsight+AIBusiness,https://www.analyticsinsight.net/news/gpt-6-astra-faces-physical-ai-safety-test-as-model-attempts-97-hazardous-instructions,RoboHarm基准测试与OpenAI自评口径存在反差,是
+2026-09-22,3,大厂动向,xAI发布Grok 4.7与语音转写模型2.0,🟡,一手信源,xAI,大模型迭代,x.ai官方,https://x.ai/news,Musk称智能速度低成本强组合 同期发布语音转写模型,否
+2026-09-22,4,大厂动向,Meta Muse AI Agent登顶App Store免费榜股价涨超11%,🟡,多源验证,Meta,AI Agent/消费入口,Bloomberg+TipRanks,https://www.bloomberg.com/news/articles/2026-09-22/korean-chip-stocks-gain-as-meta-s-muse-ai-agent-spurs-enthusiasm,Wells Fargo上调目标价至796美元 Meta Connect9/23举行,是
+2026-09-22,5,大厂动向,Google开源AX：Apache 2.0协议Agent编排运行时,🟡,多源验证,Google/DeepMind,AI Agent/开源基础设施,InfoQ+GitHub,https://www.infoq.com/news/2026/09/google-ax-orchestrator/,9/18开源 参考实现对接Gemini 1.5 Pro,是
+2026-09-22,6,大厂动向,阿里2026云栖大会开幕通义千问平台升级面向Agent生产,🟡,一手信源,阿里巴巴/通义千问,大模型/企业AI,IT之家+InfoQ,https://www.ithome.com/0/986/256.htm,9/22-24杭州举行 新增Agent Studio等能力,是
+2026-09-22,7,大厂动向,Anthropic遭用户投诉黑盒风控无理由封号引发信任危机,🟡,单源,Anthropic,AI安全/企业信任,80aj,https://www.80aj.com/2026/09/02/anthropic-ban-trust-crisis/,多地付费用户账号被封无具体解释,否
+2026-09-22,8,初创动向,Factory.com获2亿美元融资押注自主软件工程Agent,🟡,单源,Factory.com,AI编程/Agent,Funding Rounds Report,https://parsers.substack.com/p/funding-rounds-report-weekly-of-september-6c0,仅融资信息 非经营信号验证,否
+2026-09-22,9,初创动向,Genspark发布开源AI Office套件GenOffice自曝ARR达2.5亿美元,🟡,单源(深度),Genspark,AI办公/生产力软件,36Kr相关报道+知乎实测,https://www.sohu.com/a/1058281350_413980,ARR/客户数为公司自述口径待第三方核验,是
+2026-09-22,10,生态动向,四大AI巨头被诉合谋放缓AI研发反垄断法介入AI安全叙事,🔴,多源验证,Anthropic/OpenAI/xAI/Google,AI政策/反垄断,CNN+TomsHardware,https://www.cnn.com/2026/09/19/business/ai-slowdown-lawsuit-antitrust,诉讼9/19提起 指控四家CEO达成限制竞争协议,是
+2026-09-22,11,生态动向,中国官方关联账号指控Anthropic隐私政策存在向美情报输送数据风险,🟡,双源验证,Anthropic,AI政策/地缘政治,Bloomberg+Unite.AI,https://www.bloomberg.com/news/articles/2026-09-19/china-state-tv-affiliate-flags-anthropic-data-and-privacy-risks,玉渊谭天账号指控13次隐私政策修订涉数据共享,是
+2026-09-22,12,观点与深度,Forbes分析Amodei放慢前沿方案本身不够彻底,⚪,一手信源,Anthropic/OpenAI/xAI,AI政策/行业观点,Forbes,https://www.forbes.com/sites/moorinsights/2026/09/18/amodei-wants-to-pace-the-ai-frontier---but-hes-not-going-far-enough/,缺乏可执行量化标准为监管俘获批评提供把柄,否
+2026-09-22,13,观点与深度,AIBusiness分析GPT-6 Astra厂商自评与独立测试落差,⚪,一手信源,OpenAI,AI安全/行业观点,AIBusiness,https://aibusiness.com/generative-ai/openai-touts-gpt-6-astra-safest-model-still-dangerous,更安全不等于已经安全 独立红队测试更可信,否
+2026-09-22,14,今天就做,用Google AX今天跑通开源多智能体编排Demo,🟡,一手信源,Google/DeepMind,AI Agent/开发者工具,GitHub+InfoQ,https://github.com/google/ax,clone仓库跑通Gemini参考实现评估迁移可行性,是
+2026-09-22,B1,海外建设者,Peter Yang：广告市场即将迎来残酷觉醒,🟡,一手信源,-,AI Agent/广告科技,X/Twitter,https://x.com/petergyang/status/2102215701255844074,Agent代替人类浏览将冲击广告可见性假设,是
+2026-09-22,B2,海外建设者,Aaron Levie：Agent对软件调用量将是人类百倍,🟡,一手信源,Box,AI Agent/企业安全,X/Twitter,https://x.com/levie/status/2102235949430354273,安全层和数据管理平台成为刚需,是
+2026-09-22,B3,海外建设者,Garry Tan：Agent编码工具已能自动任务并行化,🟡,一手信源,-,AI编程/Agent,X/Twitter,https://x.com/garrytan/status/2102096495847551011,自动拆分任务并行执行维持干净CI流程,否
+2026-09-22,B4,海外建设者,Nikunj Kothari：Agent产品策展优于堆token,🟡,一手信源,-,AI Agent/产品方法论,X/Twitter,https://x.com/nikunj/status/2102186665863463199,对比Codex/Instinct/Muse等产品,否
