@@ -1,0 +1,16 @@
+日期,编号,板块,标题,信号等级,事实核验,关联公司,关联赛道,来源,原文URL,摘要,是否推送
+2026-09-23,1,大厂动向,OpenAI 发布 GPT-6 Sol 和 Luna，API 价格砍半，开放第三方安全评估,🔴,多源验证,OpenAI,大模型迭代,The New Stack,https://thenewstack.io/openai-gpt-6-sol-luna-release/,GPT-6 Sol/Luna发布,API价格降50%,开放训练期第三方安全评估,是
+2026-09-23,2,大厂动向,Anthropic 发布 Claude Opus 5.5，成本降40%，成为Claude Code默认模型,🔴,多源验证,Anthropic,大模型迭代,TechCrunch,https://techcrunch.com/2026/09/22/anthropic-releases-opus-5-5-with-lower-prices-and-fable-level-performance/,Opus5.5发布降价20%实际成本降40%,成为Claude Code/App默认模型,是
+2026-09-23,3,大厂动向,阿里云栖大会：自研芯片真武V900发布，Qwen4训练中，Agent硬件上线,🔴,多源验证,阿里巴巴,AI芯片/大模型/Agent硬件,IT之家,https://www.ithome.com/1/005/602.htm,真武V900芯片性能3倍于上代2027Q1量产,Qwen4训练中千问Notebook A2发布,是
+2026-09-23,4,大厂动向,Meta Muse曝0day漏洞与私信读取质疑，Meta发布Mac客户端热修复,🔴,多源验证,Meta,AI Agent安全/隐私,The Hacker News,https://thehackernews.com/2026/09/one-hidden-meta-muse-setting-could-let.html,Muse Mac客户端0day可被劫持为后门,私信读取争议Meta已否认并发布热修复,是
+2026-09-23,5,大厂动向,小米开源MiMo-V2.6系列，登顶开放权重模型综合指数榜单,🟡,多源验证,小米,大模型/开源,IT之家,https://www.ithome.com/1/005/496.htm,MiMo-V2.6-Pro在AA指数拿46分超越Kimi K3和GLM-5.3,登顶开放权重模型榜单,是
+2026-09-23,6,初创动向,Chamelio企业法务AI平台ARR八个月增长4倍完成2600万美元A轮,🟡,单源,Chamelio,法务AI/企业SaaS,AlleyWatch,https://alleywatch.com/2026/09/the-weekly-notable-startup-funding-report-9-21-26/,ARR增长4倍客户含Wiz/monday.com/Socure/AppsFlyer,经营信号强类别公司披露口径,否
+2026-09-23,7,生态动向,五角大楼调查过度依赖Palantir AI目标识别系统致伊朗学校误击123名儿童遇难,🔴,多源验证,Palantir/美国国防部,AI军事应用/治理,Bloomberg,https://www.bloomberg.com/graphics/2026-iran-school-attack/,内部调查认定AI工具过度依赖是可预防失误链条重要成因,平民伤害审核团队大幅裁员未审核该目标,是
+2026-09-23,8,生态动向,联合国安理会首次同场邀请OpenAI/Anthropic/DeepSeek/月之暗面就AI风险作证,🟡,多源验证,OpenAI/Anthropic/DeepSeek/月之暗面,AI治理/地缘政治,Decrypt,https://decrypt.co/379008/un-security-council-ai-risks-anthropic-openai-deepseek,法国主持安理会AI安全专题会议,首次同时邀请中美前沿AI开发者,否
+2026-09-23,9,观点与深度,HN热议《AI没有智慧你也不会有》引发广泛共鸣,⚪,一手信源,-,AI伦理/社区观点,Hacker News,https://news.ycombinator.com/item?id=49799965,博文引发366条评论讨论社区情绪从技术炫技转向伦理问责,否
+2026-09-23,10,观点与深度,GitHub Trending显示Agent持久记忆层成为开源焦点google/ax单日暴涨2305星,🟡,一手信源,Google,开源Agent基础设施,GitHub,https://github.com/google/ax,google/ax单日新增2305星,mem0/claude-mem等记忆项目热度走高,否
+2026-09-23,B1,海外建设者,Boris Cherny用Opus5.5+Lean/TLA+形式化验证Claude Agent SDK,🟡,一手信源,Anthropic,Agent工程/形式化验证,X,https://x.com/bcherny/status/2102543349102338309,几个简短prompt生成16个修复PR,Opus5.5对比Fable5.1移植HAProxy更快更省51%成本,是
+2026-09-23,B2,海外建设者,Guillermo Rauch公布Next.js四模型评测Opus5.5/GPT6Sol/Fable5.1同分Grok4.7更便宜,🟡,一手信源,Vercel,模型评测,X,https://x.com/rauchg/status/2102519097770885231,四款旗舰模型Next.js评测前三97%Grok4.7为94%但便宜2-7倍,否
+2026-09-23,B3,海外建设者,Aaron Levie分享Box用Opus5.5企业任务token消耗降63%速度提升30%,🟡,一手信源,Box,企业AI应用,X,https://x.com/levie/status/2102448415775051790,Box Agent测试Opus5.5复杂知识工作任务效率数据,否
+2026-09-23,B4,海外建设者,Thariq观点：模型能力提升不该堆10倍功能而应花时间理解用户,⚪,一手信源,Anthropic,产品方法论,X,https://x.com/trq212/status/2102548686303854790,别用能力堆功能该做实验理解用户再决定造什么,否
+2026-09-23,11,今天就做,开发者把Agent测试运行次数从2490次砍到206次同时保持覆盖率,🟡,一手信源,-,Agent测试/工程实践,Dev.to,https://dev.to/debashish_ghosal/i-cut-2490-agent-test-runs-to-206-and-kept-the-same-coverage-1cke,更智能编排策略降低91%测试运行次数,保持相同覆盖率,是
