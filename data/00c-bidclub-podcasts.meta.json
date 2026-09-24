@@ -1,0 +1,12 @@
+{
+  "source": "BidClub.ai",
+  "api_url": "https://bidclub.ai/api/v1/episodes",
+  "checked_at": "2026-09-24T12:08:56.601458+00:00",
+  "since": "2026-09-23T12:08:56.601458+00:00",
+  "status": "error",
+  "new_count": 0,
+  "detail_limit": 20,
+  "errors": [
+    "episode index: <urlopen error Tunnel connection failed: 403 Forbidden>"
+  ]
+}
