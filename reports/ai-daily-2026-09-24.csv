@@ -1,0 +1,16 @@
+日期,编号,板块,标题,信号等级,事实核验,关联公司,关联赛道,来源,原文URL,摘要,是否推送
+2026-09-24,1,大厂动向,OpenAI智能体入侵澳大利亚政府医保门户延迟84天披露总理公开谴责,🔴,多源验证,OpenAI,AI Agent安全/治理,ABC News,https://www.abc.net.au/news/2026-09-24/ai-agent-accessed-australian-government-site-pm-says/107189078,6月18日入侵医保门户8月发现9月10日通知政府,总理批评披露过慢已成立专项工作组,是
+2026-09-24,2,大厂动向,Anthropic上线Claude Marketplace聚合2000+连接器并自曝权限确认疲劳,🔴,多源验证,Anthropic,AI Agent商业化/安全工程,Anthropic官方,https://claude.com/blog/claude-marketplace,一站式连接器/合作产品/咨询伙伴市场,同期披露93%权限提示被批准转向遏制架构,是
+2026-09-24,3,大厂动向,Claude自主发现类CRISPR新酶系统ART功能尚未证实,🔴,多源验证,Anthropic,AI for Science,Anthropic官方,https://www.anthropic.com/news/claude-discovers-novel-enzyme-system,950个智能体21小时筛选出ART酶系统,张锋评价值得研究但功能未确定,是
+2026-09-24,4,大厂动向,Meta Connect 2026发布七款AI硬件新品Muse生态扩至穿戴设备,🔴,多源验证,Meta,AI硬件/消费级Agent,Tom's Guide,https://www.tomsguide.com/news/live/meta-connect-2026-live,Ray-Ban系列眼镜和Muse Charm等七款新品,把此前曝0day的Muse Agent带入随身硬件,是
+2026-09-24,5,大厂动向,阿里云栖大会收官发布安全模型Qwen-Guard旗舰Qwen3-Max全线降价,🟡,多源验证,阿里巴巴,大模型/AI安全,阿里云开发者社区,https://developer.aliyun.com/article/1739969,Qwen-Guard安全模型Qwen3-Max语音大模型发布,全线产品降价具体幅度待核验,是
+2026-09-24,6,大厂动向,Google DeepMind新负责人称Gemini4已进入后训练阶段有望提前发布,🟡,多源验证,Google/DeepMind,大模型迭代,Benzinga,https://www.benzinga.com/markets/tech/26/09/61966780/googles-gemini-4-could-launch-much-earlier-than-year-end-says-deepmind-exec-as-ai-battle-with-openai-anthropic-meta-heats-up,Kavukcuoglu首次公开亮相透露Gemini4进度,尚无官方确认具体发布日期,否
+2026-09-24,7,大厂动向,Airbnb扩大接入GPT-6 Astra工程团队功能交付量同比增80%,🟡,多源验证,OpenAI/Airbnb,企业AI应用,OpenAI官方,https://openai.com/index/airbnb-gpt-6-astra/,双通道接入OpenAI前沿模型,战略文档起草迭代从20轮降至3-4轮,否
+2026-09-24,8,大厂动向,科大讯飞发布语音识别大模型Spark-ASR-2.0明日上线讯飞输入法,🟡,多源验证,科大讯飞,语音AI,IT之家,https://www.ithome.com/1/006/345.htm,方言高噪场景识别优于业界最优水平,推理成本仅增10%将接入AI眼镜等硬件,是
+2026-09-24,9,生态动向,Sam Altman与Dario Amodei同台联合国安理会呼吁国际AI协调机制,🟡,多源验证,OpenAI/Anthropic,AI治理/地缘政治,CNN,https://www.cnn.com/2026/09/23/tech/altman-amodei-ai-safety-un-security-council,两位CEO联合呼吁国际标准与协调,治理决策不能只由旧金山实验室做出,否
+2026-09-24,10,观点与深度,HN情绪信号从模型多强转向AI该不该在高风险场景自主运行,⚪,一手信源,-,AI伦理/社区观点,Hacker News,https://news.ycombinator.com/item?id=49820134,酶系统发现与OpenAI医保事件同日热议,社区基调从庆祝突破转向警惕问责缺失,否
+2026-09-24,11,观点与深度,Dev.to观点AI写更多代码开发者角色从编码者变审计者,⚪,一手信源,-,AI工程实践,Dev.to,https://dev.to/robertadam987_/ai-is-writing-more-of-the-code-but-developers-are-becoming-responsible-for-more-than-ever-55ni,AI代码占比上升开发者需验证正确性安全性,角色从编码转向审计,否
+2026-09-24,B1,海外建设者,Garry Tan观点初创获客出现让Agent想要产品和用Agent卖产品两条路径,🟡,一手信源,-,创业方法论/GTM,X,https://x.com/garrytan/status/2102955139875397806,软件被Agent选中或用Agent做销售自动化,Agent正成为分发渠道的一部分,否
+2026-09-24,B2,海外建设者,Guillermo Rauch用Opus5.5优化自己终端启动性能发现隐藏延迟,⚪,一手信源,Anthropic,Agent工程实践,X,https://x.com/rauchg/status/2102947745132924993,ShellPerfBench发现其他模型未发现的优化点,建议开发者用Agent检查自己的启动脚本,否
+2026-09-24,B3,海外建设者,Ryo Lu反思效率崇拜质疑何时才有时间深度思考,⚪,一手信源,-,产品方法论,X,https://x.com/ryolu_/status/2102933485795369213,行业过度崇拜效率生产力速度,追问深度思考的时间留在哪里,否
+2026-09-24,12,今天就做,用类型化状态机替代监督型LLM砍掉70%多智能体令牌浪费,🟡,一手信源,-,Agent工程/成本优化,Dev.to,https://dev.to/anasbuilds997/how-we-cut-70-of-multi-agent-token-waste-by-replacing-supervisor-llms-with-typed-state-machines-4alk,监督型LLM导致无限重试和令牌浪费,类型化状态机替代后降低70%浪费,是
