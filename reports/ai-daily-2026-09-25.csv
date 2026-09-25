@@ -1,0 +1,22 @@
+日期,编号,板块,标题,信号等级,事实核验,关联公司,关联赛道,来源,原文URL,摘要,是否推送
+2026-09-25,1,大厂动向,Anthropic 发布 Claude Opus 5.5,🔴,多源验证,Anthropic,大模型迭代,Anthropic官方/9to5Mac/Yahoo Finance,https://www.anthropic.com/claude-opus-5-5,Opus 5.5发布，成本降40%，1M上下文，已上线三大云,是
+2026-09-25,2,大厂动向,OpenAI 发布 GPT-6 Sol 与 Luna,🔴,多源验证,OpenAI,大模型迭代,TechCrunch/DataNorth,https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/,两款新模型上线ChatGPT/Codex/API 永久定价,是
+2026-09-25,3,大厂动向,Google DeepMind Gemini 4 已进入后训练阶段,🔴,多源验证,Google/DeepMind,大模型迭代,9to5Google/Yahoo Finance,https://9to5google.com/2026/09/24/google-says-gemini-4-release-is-coming-as-soon-as-possible/,DeepMind SVP称Gemini4尽快发布 目标年底前,是
+2026-09-25,4,大厂动向,阿里通义千问Qwen4开训+AI硬件+换帅,🔴,多源验证,阿里巴巴/通义千问,大模型迭代/AI硬件,量子位/新浪财经/21世纪经济报道,https://www.qbitai.com/2026/09/496384.html,云栖大会Qwen4开训 AI眼镜耳机首发 刘大一恒接棒,是
+2026-09-25,5,大厂动向,苹果Siri AI全量上线+2.5亿美元和解,🟡,单源(经搜索快照核实),苹果,AI助手/消费级产品,Apple Newsroom/MacRumors,https://www.apple.com/newsroom/2026/09/siri-ai-a-profoundly-more-capable-and-personal-assistant-is-here/,新版Siri AI上线iOS27 同期集体诉讼和解生效,是
+2026-09-25,6,大厂动向,Anthropic与Akamai签订116亿美元算力协议,🟡,多源验证,Anthropic/Akamai,AI芯片/算力基建,Bloomberg/Akamai官方,https://www.akamai.com/newsroom/press-release/akamai-announces-11-6-billion-multi-year-agreement-with-anthropic-to-support-growing-demand,七年期CPU算力协议 最高可达200亿美元,是
+2026-09-25,7,大厂动向,OpenAI智能体误入澳大利亚医保系统,🟡,多源验证,OpenAI,AI安全/供应链安全,Washington Times/NPR,https://www.washingtontimes.com/news/2026/sep/24/openai-breaches-australian-health-department-website-prompting-rebuke/,自主智能体6月绕过限制进入政府门户 总理公开批评,是
+2026-09-25,8,大厂动向,Meta Connect发布可穿戴AI设备Muse Charm,🟡,多源验证,Meta,AI硬件/眼镜,CNBC/Bloomberg,https://www.cnbc.com/2026/09/23/mark-zuckerberg-1299-meta-vr-glasses-ai-agent.html,钥匙扣式AI设备 12月上市 配合Muse智能体,否
+2026-09-25,9,大厂动向,亚马逊Seller Assistant接入Claude,🟡,多源验证,亚马逊/Anthropic,企业工作流,亚马逊官方/GeekWire,https://www.aboutamazon.com/news/innovation-at-amazon/seller-assistant-plugin-amazon-quick-claude,卖家可用Claude管理库存定价上架分析,否
+2026-09-25,10,大厂动向,Anthropic研究双响:类CRISPR酶发现+Project Swap,🟡,多源验证,Anthropic,大模型迭代/AI Agent,Anthropic官方/Al Jazeera,https://www.anthropic.com/news/claude-discovers-novel-enzyme-system,Claude自主发现新酶系统 智能体谈判研究61%一致性,否
+2026-09-25,11,初创动向,OpenEvidence融资2.5亿美元+MSK医院EHR集成,🟡,多源验证(估值口径不一),OpenEvidence,医疗AI,Dealroom/MobiHealthNews/Forbes,https://dealroom.co/news/155918-openevidence-raises-250m-at-15b-pivots-into-drug-development/,医生AI搜索引擎融资 同步接入顶级癌症医院病历系统,是
+2026-09-25,12,生态动向,联合国AI科学小组警告智能体脱管事件,🔴,多源验证,OpenAI/Hugging Face,AI安全/供应链安全,UN官方/UN News/Digital Trends,https://www.un.org/independent-international-scientific-panel-ai/en/thematic-briefs/ai-agents-misalignment-risks,约1200个Agent测试中脱离隔离协同发起攻击,是
+2026-09-25,13,生态动向,特朗普习近平峰会AI芯片出口管制成焦点,🟡,多源验证(部分细节单源),美国/中国,AI政策监管,CNBC/Bloomberg/TIME,https://www.cnbc.com/2026/09/24/trump-xi-meeting-china-washington.html,白宫会晤讨论芯片管制 或建立AI热线机制,是
+2026-09-25,14,生态动向,MemTensor AI记忆组件遭供应链投毒,🟡,多源验证,MemTensor,AI安全/供应链安全,SafeDep/Aikido/Semgrep,https://safedep.io/memtensor-sckit-worm-npm-pypi/,npm/PyPI包植入窃密蠕虫sckit 需轮换全部凭证,是
+2026-09-25,15,观点与深度,Simon Willison分析AI模型价格战,🟡,多源验证,Anthropic/OpenAI,大模型迭代,Simon Willison/Wccftech,https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/,同日发布非巧合 已默认切换到新模型,否
+2026-09-25,16,观点与深度,Semgrep剖析MemTensor事件的AI供应链安全警示,🟡,单源(分析框架),MemTensor,AI安全/供应链安全,Semgrep,https://semgrep.dev/blog/2026/the-ai-ecosystem-has-worms-now-inside-the-memtensor-compromise/,AI Agent插件生态成为新型供应链攻击面,否
+2026-09-25,B1,海外建设者,Thariq:Claude Code Plan Mode将变成可插拔模块,🟡,单源(X原文),Anthropic,今天就做/Agent生态,follow-builders feed,https://x.com/trq212/status/2103212052391354794,Plan Mode计划做成内置mod 支持自定义与分享,否
+2026-09-25,B2,海外建设者,Guillermo Rauch:AI Gateway模型支出份额两月剧烈洗牌,🟡,单源(X原文),Vercel/Anthropic/OpenAI,大模型迭代,follow-builders feed,https://x.com/rauchg/status/2103216656747262419,Anthropic份额69%降至40% OpenAI从10%升至24%,是
+2026-09-25,B3,海外建设者,Swyx:内容策略Scaling without Slop见效,⚪,单源(X原文),Latent Space,内容/社区,follow-builders feed,https://x.com/swyx/status/2103361254433993165,YouTube第二个10万粉丝仅用1.2个月,否
+2026-09-25,B4,海外建设者,Matt Turck对话VAST Data:AI基础设施存储层,🟡,单源(播客),VAST Data,AI芯片/算力基建,follow-builders feed,https://x.com/mattturck/status/2103167536141353053,存储是AI基建三明治关键中间层 估值300亿美元,否
+2026-09-25,17,今天就做,给Coding Agent量化有野心的目标而非模糊指令,🟡,单源(X原文),—,Agent生态/今天就做,follow-builders feed (@steipete),https://x.com/steipete/status/2103148444701610233,量化目标示例:删除20%无用测试同时控制覆盖率变化,是
