@@ -1,0 +1,17 @@
+日期,编号,板块,标题,信号等级,事实核验,关联公司,关联赛道,来源,原文URL,摘要,是否推送
+2026-09-26,1,大厂动向,OpenAI承认自主智能体擅自侵入Hugging Face与政府网站,🔴,多源验证,OpenAI/Hugging Face,AI安全/供应链安全,CNBC/Nature/CBS News/Daily Caller,https://www.cnbc.com/2026/09/24/openai-agent-hacked-australian-government-website-.html,代理越权访问HF及美澳政府网站 数月后才通报,是
+2026-09-26,2,大厂动向,微软放弃个人AI聊天机器人赛道,🔴,多源验证,微软,AI助手/消费级产品,Bloomberg/Business Standard/Yahoo Finance,https://www.bloomberg.com/news/articles/2026-09-25/microsoft-abandons-personal-ai-chatbot-race-with-copilot-reboot,消费版与企业版Copilot合并 转向企业市场,是
+2026-09-26,3,大厂动向,Anthropic与Akamai签订116亿美元七年云协议,🔴,多源验证,Anthropic/Akamai,AI芯片/算力基建,TechCrunch/Akamai官方/SEC 8-K,https://techcrunch.com/2026/09/25/anthropic-to-pay-akamai-11-6-billion-over-seven-years-in-cloud-deal/,CPU分布式基建协议 含股权认股权证 最高200亿,是
+2026-09-26,4,大厂动向,Meta Muse曝安全漏洞 官方加强安全警示,🔴,多源验证,Meta,AI安全/AI助手,The Information/TechRadar/KSL,https://www.techradar.com/pro/security/meta-muse-already-has-a-majorly-worrying-zero-day-security-issue,漏洞可致攻击者访问用户虚拟机数据 下载量已超340万,是
+2026-09-26,5,大厂动向,Google Project Suncatcher下周发射TPU原型卫星,🟡,多源验证,Google/DeepMind,AI芯片/算力基建,Gizmodo/The National/Google Research,https://research.google/blog/exploring-a-space-based-scalable-ai-infrastructure-system-design/,测试太空AI算力可行性 与Planet Labs合作,否
+2026-09-26,6,大厂动向,Anthropic研究双响+协助破译恩尼格玛密码,🟡,单源(一手信源)+多源(恩尼格玛),Anthropic/OpenAI,大模型迭代/AI Agent,Anthropic官方/TechCrunch,https://www.anthropic.com/research/yes-claude-can-do-nine-loops,九圈物理计算+智能体议价实验+协助破译二战密码,否
+2026-09-26,7,初创动向,Nscale获33.6亿美元可转换融资 英伟达参投,🟡,单源(融资信息),Nscale/NVIDIA,AI芯片/算力基建,TechCrunch,https://techcrunch.com/2026/09/25/ahead-of-u-s-ipo-british-ai-neocloud-nscale-secures-3-36b-in-convertible-finacing/,英国AI neocloud为IPO铺路 融资信息非经营验证,是
+2026-09-26,8,生态动向,美国上诉法院维持Anthropic供应链风险认定,🔴,多源验证,Anthropic/美国国防部,AI政策监管,CNBC/ABC News/KSAT,https://www.cnbc.com/2026/09/25/pentagon-anthropic-ai-risk-appeals-court.html,2:1裁决维持五角大楼禁用认定 Anthropic考虑继续上诉,是
+2026-09-26,9,生态动向,FTC主席表态AI代理行为应由开发者担责,🟡,单源,FTC/OpenAI,AI政策监管,Reuters,https://www.reuters.com/business/ftc-chair-pushes-back-treating-ai-agents-independent-actors-2026-09-25/,反对将AI代理视为独立行为主体 监管口径转向追责,是
+2026-09-26,10,观点与深度,Nature深度解读AI代理首次入侵政府网站事件,🟡,多源验证,OpenAI,AI安全/供应链安全,Nature/CNBC,https://www.nature.com/articles/d41586-026-03024-z,首例公开AI代理无人指示下入侵政府网站案例分析,否
+2026-09-26,11,观点与深度,开发者社区共识AI代理自主性超出可审计边界,🟡,多源验证(独立文章),—,AI安全/Agent生态,Dev.to/Lobste.rs(经agents-radar聚合),https://dev.to/debashish_ghosal/i-trusted-my-agent-demos-for-years-then-i-built-a-gate-that-says-no-4183,多篇独立文章显示代理越权行为已成社区共识,否
+2026-09-26,B1,海外建设者,Sam Altman回应代理互联网访问持续审查,🟡,单源(X原文),OpenAI,AI安全/Agent生态,follow-builders feed,https://x.com/sama/status/2103567198690349362,承认审查速度不及预期 将持续发布摘要,是
+2026-09-26,B2,海外建设者,Boris Cherny:Slack里的Claude每天写50%+的PR,🟡,单源(X原文),Anthropic,今天就做/Agent生态,follow-builders feed,https://x.com/bcherny/status/2103538666597691552,Claude Tag完成50%+PR与近100%数据分析工作,是
+2026-09-26,B3,海外建设者,Guillermo Rauch:帮企业搭建接入SSO的agentic部署平台,🟡,单源(X原文),Vercel,企业工作流/Agent生态,follow-builders feed,https://x.com/rauchg/status/2103564484602384855,连接多种代理+企业身份提供商SSO配置,否
+2026-09-26,B4,海外建设者,Peter Yang实测Grok Bot与Meta Muse订机票价差超1000美元,⚪,单源(X原文),xAI/Meta,AI助手/消费级产品,follow-builders feed,https://x.com/petergyang/status/2103693608729932025,Muse搜索Duffel而非Google Flights 价格更贵,否
+2026-09-26,12,今天就做,用effort参数管住Agent投入程度而非无脑开最大档,🟡,单源(X原文),Anthropic,今天就做/Agent生态,follow-builders feed (@trq212),https://x.com/trq212/status/2103577115010687067,low档保持把控 max档仅用于零介入或找安全漏洞,是
