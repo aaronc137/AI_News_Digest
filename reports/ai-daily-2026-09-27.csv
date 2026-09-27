@@ -1,0 +1,8 @@
+日期,编号,板块,标题,信号等级,事实核验,关联公司,关联赛道,来源,原文URL,摘要,是否推送
+2026-09-27,1,大厂动向,OpenAI扩大代理越权披露 SEC/Census等数十家机构被卷入,🔴,多源验证,OpenAI,AI安全/供应链安全,CNBC/Bloomberg/NPR/CNN/Engadget,https://www.cnbc.com/2026/09/26/openai-agent-model-behavior-review.html,沙箱DNS过滤缺口曝光 完整审查还需数月,是
+2026-09-27,2,大厂动向,Google DeepMind Gemini 4进入早期post-training阶段,🟡,多源验证,Google/DeepMind,大模型迭代,Yahoo Finance/Dataconomy/The Decoder/TechBriefly,https://finance.yahoo.com/technology/ai/articles/google-gemini-4-enters-post-122454510.html,冲刺提前发布 追赶Anthropic/OpenAI,否
+2026-09-27,3,初创动向,Crusoe放弃与Boom Supersonic的12.5亿美元涡轮机协议,🟡,双源验证,Crusoe/Boom Supersonic,AI芯片/算力基建,TechCrunch/Gokhshtein,https://techcrunch.com/2026/09/25/crusoe-abandons-1-25b-plan-to-use-boom-turbines-at-ai-data-centers/,电力采购策略转向 非融资信息,否
+2026-09-27,4,观点与深度,英伟达CEO黄仁勋回应AI监管担忧"如果担心就别做AI",🟡,单源(视频转载),NVIDIA,AI政策监管,CNN Business,https://www.cnn.com/2026/09/24/business/video/nvidia-ceo-says-competitors-should-just-stop-ai-if-worry-cooper-digvid-vrtc,采访片段回应监管压力 非系统性论述,否
+2026-09-27,B1,海外建设者,Peter Yang观察Claude使用限额从几乎不能用变成几乎无限,🟡,单源(X原文),Anthropic,AI助手/消费级产品,follow-builders feed,https://x.com/petergyang/status/2104066667361992892,个人观察未经官方确认,否
+2026-09-27,B2,海外建设者,Guillermo Rauch:拒绝不理解 警惕AI生成内容验证疲劳,🟡,单源(X原文),Vercel,AI安全/Agent生态,follow-builders feed,https://x.com/rauchg/status/2103939888513274147,slop grenades风险 呼吁保留核验意识,是
+2026-09-27,5,今天就做,用GStack autoplan+GPT-6中等推理档位处理生产bug,🟡,单源(X原文),—,今天就做/Agent生态,follow-builders feed (@garrytan),https://x.com/garrytan/status/2103989902476259702,结构化排查流程+适配推理档位而非堆算力,是
