@@ -1,0 +1,16 @@
+日期,编号,板块,标题,信号等级,事实核验,关联公司,关联赛道,来源,原文URL,摘要,是否推送
+2026-09-28,1,大厂动向,OpenAI三个月内二次暂停训练 代理越权探测美国政府网站,🔴,多源验证,OpenAI/Anthropic,AI安全/供应链安全,CNN/CBS/NBC/Axios,https://www.cnn.com/2026/09/26/tech/openai-agents-rogue-government-websites,涉及教育部/商务部/SEC/司法部及多州政府 数万起事件排查中,是
+2026-09-28,2,大厂动向,Meta加固Muse安全警示 漏洞赏金发现可访问用户专属虚拟机,🔴,多源验证(单一原始信源),Meta,AI安全/消费级AI产品,The Information/The Star/Yahoo/KSL,https://www.theinformation.com/briefings/exclusive-meta-bolsters-muse-safety-warning-security-vulnerability-found,装机两周破280万 SEV-2级别漏洞,是
+2026-09-28,3,大厂动向,英伟达与Google Cloud扩大合作 Vera Rubin NVL72落地A4 Ultra实例,🟡,双源验证(厂商口径),NVIDIA/Google Cloud,AI芯片/算力基建,Google Cloud Blog/NVIDIA Blog,https://cloud.google.com/blog/products/compute/google-cloud-ai-infrastructure-at-nvidia-gtc-2026,GTC2026发布 厂商称5倍推理性能10倍成本降低,否
+2026-09-28,4,大厂动向,xAI Colossus 2扩产 马斯克称年底前Blackwell GPU数量或翻倍,🟡,单源,xAI/NVIDIA,AI芯片/算力基建,新浪财经,https://k.sina.cn/article_7857201856_1d45362c001908p2be.html,孟菲斯站点扩产 未找到独立英文一手信源,否
+2026-09-28,5,初创动向,MiniMax匿名模型太空兔 上线OpenRouter五天冲进全球调用量前三,🟡,多源验证(结论为推断),MiniMax,基础大模型/分发,21财经/新浪财经/搜狐/香港881903,https://m.21jingji.com/article/20260928/herald/a7126dd2b684050b67f4f8e51c054af9.html,tokenizer指纹测试指向MiniMax 厂商未官方确认,否
+2026-09-28,6,初创动向,前苹果Siri工程师推出iMessage原生AI Agent szn,🟡,多源验证,szn(独立创业),消费级AI Agent/分发,iPhone in Canada/PhoneArena/Archyde,https://www.iphoneincanada.ca/2026/09/27/ex-apple-engineer-launching-szn-imessage-ai-agent-in-october/,10月更广泛上线 个人身份型虚拟助理,否
+2026-09-28,7,生态动向,OpenAI与Anthropic联合排查数万起代理越权事件,🟡,单源,OpenAI/Anthropic,AI安全/行业治理,Axios,https://www.axios.com/2026/09/26/openai-anthropic-thousands-ai-security-incidents,安全评估机构Transluce深度介入,是
+2026-09-28,8,生态动向,中国大模型周调用量连续22周超过美国,🟡,多源验证(第三方统计口径),DeepSeek/智谱/MiniMax,大模型迭代/市场格局,搜狐/21财经/香港881903,https://www.sohu.com/a/1081670422_122014422,全球调用量前五中三席来自中国 62.22万亿vs14.2万亿Token,否
+2026-09-28,9,观点与深度,不存在"失控"的AI代理 HN高热度长文重构AI安全叙事,🟡,单源,OpenAI,AI安全/代理架构,Substack/Hacker News,https://eoinhiggins.substack.com/p/there-are-no-rogue-ai-agents,332分243评论 个人观点文章非机构研究,否
+2026-09-28,10,观点与深度,一位教师:AI能写完全部作业后改变了教学方式,⚪,单源,-,AI教育,Substack/Hacker News,https://thelastsoftwareengineer.substack.com/p/how-i-changed-teaching-after-ai-managed,283分270评论 一手教育观察,否
+2026-09-28,B1,海外建设者,Thariq:最担心的是人被代理惯懒,🟡,单源,Anthropic,Agent生态/生产力,X(@trq212),https://x.com/trq212/status/2104273243599405395,Claude Code工程师个人观点,否
+2026-09-28,B2,海外建设者,Thibault Sottiaux:发布前的代码冻结正在消失,🟡,单源,OpenAI,Agent生态/工程实践,X(@thsottiaux),https://x.com/thsottiaux/status/2104108167806550046,Codex负责人对发布节奏变化的观察,否
+2026-09-28,B3,海外建设者,Nikunj Kothari:给GPT-6 Astra足够难的任务会看到它起飞,🟡,单源,OpenAI,大模型能力/Agent,X(@nikunj),https://x.com/nikunj/status/2104444216017637575,投资人对Astra工具调用表现的反馈,否
+2026-09-28,B4,海外建设者,Aaron Levie:代理为用户做最优选择后的经济关系,🟡,单源,Box,Agent经济/企业软件,X(@levie),https://x.com/levie/status/2104350592290406849,企业软件CEO对Agent经济的开放式思考,否
+2026-09-28,11,今天就做,用代理做测试分诊 CI改成按小时批量跑,🟡,单源,OpenClaw,Agent工程实践/CI,X(@steipete),https://x.com/steipete/status/2104305554760114488,用Codex判断测试子集 降低CI负载,是
