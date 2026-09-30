@@ -1,0 +1,9 @@
+日期,编号,板块,标题,信号等级,事实核验,关联公司,关联赛道,来源,原文URL,摘要,是否推送
+2026-09-30,1,大厂动向,OpenAI DevDay 2026 Dots常驻Agent GPT-6.1 Sol降价Ultrafast提速8倍,🔴,多源验证,OpenAI,Agent生态/大模型/开发者工具,OpenAI官网/CNBC/9to5mac,https://openai.com/index/devday-2026-recap/,6.1 Sol为Astra1/5价格 Ultrafast最高提速8倍 新增Pro 500档位,是
+2026-09-30,B1,海外建设者,Sam Altman:Dots/Ultrafast/6.1 Sol三连发,🔴,一手信源,OpenAI,Agent生态/大模型,X(@sama),https://x.com/sama/status/2104995014208258235,DevDay核心产品发布的官方一手信源,是
+2026-09-30,B2,海外建设者,Thibault Sottiaux:数百万Dots即将上线,🟡,单源,OpenAI,Agent生态,X(@thsottiaux),https://x.com/thsottiaux/status/2105105086506840421,Codex/ChatGPT负责人透露早期投放规模,否
+2026-09-30,B3,海外建设者,Guillermo Rauch:Vercel AI SDK周下载量破3000万,🟡,单源,Vercel,开发者工具/Agent生态,X(@rauchg),https://x.com/rauchg/status/2105043144975011982,厂商自报下载量里程碑,否
+2026-09-30,B4,海外建设者,Zara Zhang:6轮提示词组合4款AI工具建站,🟡,单源,-,Agent生态/生产力,X(@zarazhangrui),https://x.com/zarazhangrui/status/2105096296831017078,Opus5.5+ElevenLabs+Meshy+OpenAI API组合建站案例,否
+2026-09-30,B5,海外建设者,Thariq转发Anthropic如何让Claude更快工程博客,🟡,单源(原文发布9/24超出窗口),Anthropic,大模型工程/性能优化,X(@trq212),https://x.com/trq212/status/2105065175711924492,claude.ai首屏提速82%消息延迟降95% 两周合并3000+PR,否
+2026-09-30,B6,海外建设者,Amjad Masad:低成本harness逼近前沿性能,⚪,单源,Replit,Agent工程/Harness设计,X(@amasad),https://x.com/amasad/status/2104996638817386820,链接分享未展开具体方法论,否
+2026-09-30,12,今天就做,把OpenClaw测试审计Skill合并进自己的工具链,🟡,单源,YC/OpenClaw,Agent工程实践/Skill复用,X(@garrytan),https://x.com/garrytan/status/2105049005147525231,YC CEO用社区Skill替代自建测试审计逻辑,是
